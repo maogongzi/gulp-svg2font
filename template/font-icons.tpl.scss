@@ -1,0 +1,44 @@
+// Caution!!
+// do not manually modify this file since it is generated
+// dynamically via it's original `Handlebars` template 'font-icons.tpl.scss',
+// or your lose all your changes once this file get updated!
+//
+// this is a handlebars template, make sure you have handlebars installed in
+// order to compile it.
+//
+// 3 variables and 1 helper are required to compile this template:
+// vars: glyphs, fontName, fontClass
+// helper: parseCode => e.g. `parseCode 50123 -> EA03`
+
+@font-face {
+  font-family: '{{ fontName }}';
+  src: url('#{asset-name('fonts/{{ fontName }}/{{ fontName }}.eot')}');
+  src: url('#{asset-name('fonts/{{ fontName }}/{{ fontName }}.eot')}?#iefix') format('eot'),
+    url('#{asset-name('fonts/{{ fontName }}/{{ fontName }}.woff2')}') format('woff2'),
+    url('#{asset-name('fonts/{{ fontName }}/{{ fontName }}.woff')}') format('woff'),
+    url('#{asset-name('fonts/{{ fontName }}/{{ fontName }}.ttf')}') format('truetype'),
+    url('#{asset-name('fonts/{{ fontName }}/{{ fontName }}.svg')}#{{ fontName }}') format('svg');
+
+  font-style: normal;
+  font-weight: normal;
+}
+
+.{{ className }} {
+  &::before {
+    display: inline-block;
+
+    font-style: normal;
+    font-weight: normal;
+    font-family: '{{ fontName }}';
+    line-height: inherit;
+
+    vertical-align: bottom;
+
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+  }
+
+{{#each glyphs}}
+  &__{{ name }}::before { content: '\\{{parseCode unicode}}'; }
+{{/each}}
+}
